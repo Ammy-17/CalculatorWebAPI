@@ -6,10 +6,6 @@ namespace CalculatorWebAPI.Servises.Classes
 {
     internal sealed class CalculatorService : ICalculatorService
     {
-        public bool IsSuccess { get; private set; }
-        public HttpStatusCode StatusCode { get; private set; }
-        public float Value { get; private set; }
-
         public Task<AppResponseModel<float?>> DivideAsync(OperationModel operation)
         {
             if (operation.Num2 is 0)

@@ -20,7 +20,7 @@ namespace CalculatorWebAPI.Models
 
         /// <summary>
         /// Valor de la respuesta de la solicitud 
-        /// </summary>
+        /// </summary>  
         public TValue? Value { get; set; }
 
     }

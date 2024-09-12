@@ -4,10 +4,16 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CalculatorWebAPI.Controllers
 {
+    /// <summary>
+    /// Controlador que adminsitra el servicio de calculadora.
+    /// </summary>
     [ApiController]
     [Route("api/[controller]")]
     public class CalculatorController : ControllerBase
     {
+        /// <summary>
+        /// Servicio de calculadora.
+        /// </summary>
         private readonly ICalculatorService _calculatorService;
 
         public CalculatorController(ICalculatorService calculatorService)
@@ -15,6 +21,11 @@ namespace CalculatorWebAPI.Controllers
             _calculatorService = calculatorService;
         }
 
+        /// <summary>
+        /// Endpoint para realizar la suma de dos números.
+        /// </summary>
+        /// <param name="model">Modelo que contiene los dos números.</param>
+        /// <returns>Tarea que retorna la respuesta de la petición.</returns>
         [HttpPost("sum")]
         public async Task<IActionResult> SumAsync([FromBody] OperationModel model)
         {
@@ -36,13 +47,11 @@ namespace CalculatorWebAPI.Controllers
             return StatusCode((int)response.StatusCode, response);
         }
 
-
         [HttpPost("multiply")]
         public async Task<IActionResult> MultiplyAsync([FromBody] OperationModel model)
         {
             var response = await _calculatorService.MultiplyAsync(model);
             return StatusCode((int)response.StatusCode, response);
         }
-
     }
 }
